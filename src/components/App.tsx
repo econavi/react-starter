@@ -10,6 +10,7 @@ export const App = () => {
       <Header>
         <Title>Hello world</Title>
       </Header>
+      <div>isDevMode: {__IS_DEV__}</div>
       <Links>
         <Link to="/">Home</Link>
         <Link to="/about">About</Link>
