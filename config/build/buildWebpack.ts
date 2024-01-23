@@ -1,5 +1,4 @@
 import webpack from 'webpack'
-import path from 'path'
 import { buildDevServer } from './buildDevServer'
 import { buildLoaders } from './buildLoaders'
 import { buildPlugins } from './buildPlugins'
@@ -18,7 +17,7 @@ export const buildWebpack = (options: BuildOptions): webpack.Configuration => {
       clean: true
     },
     module: {
-      rules: buildLoaders()
+      rules: buildLoaders(options)
     },
     plugins: buildPlugins(options),
     resolve: buildResolvers(options),

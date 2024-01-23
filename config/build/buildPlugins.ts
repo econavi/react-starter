@@ -12,7 +12,10 @@ export const buildPlugins = (options: BuildOptions): Plugins => {
   const isDev = options.mode === 'development'
 
   const plugins: Plugins = [
-    new HtmlWebpackPlugin({ template: options.paths.html }),
+    new HtmlWebpackPlugin({
+      template: options.paths.html,
+      favicon: path.resolve(options.paths.public, 'favicon.ico')
+    }),
     new DefinePlugin({
       __IS_DEV__: JSON.stringify(isDev.toString())
     })
