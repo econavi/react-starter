@@ -1,6 +1,11 @@
-import { ModuleOptions } from 'webpack'
+import ReactRefreshTypeScript from 'react-refresh-typescript'
 
-export const buildLoaders = (): ModuleOptions['rules'] => {
+import type { ModuleOptions } from 'webpack'
+import type { BuildOptions } from './types/types'
+
+export const buildLoaders = (options: BuildOptions): ModuleOptions['rules'] => {
+  const isDev = options.mode === 'development'
+
   const cssLoader = {
     test: /\.css$/i,
     use: ['style-loader', 'css-loader']
@@ -8,8 +13,17 @@ export const buildLoaders = (): ModuleOptions['rules'] => {
 
   const tsLoader = {
     test: /\.tsx?$/,
-    use: 'ts-loader',
-    exclude: /node_modules/
+    exclude: /node_modules/,
+    use: [
+      {
+        loader: 'ts-loader',
+        options: {
+          getCustomTransformers: () => ({
+            before: [isDev && ReactRefreshTypeScript()].filter(Boolean)
+          })
+        }
+      }
+    ]
   }
 
   const assetLoader = {
