@@ -16,11 +16,11 @@ export const buildPlugins = (options: BuildOptions): Plugins => {
   const plugins: Plugins = [
     new HtmlWebpackPlugin({
       template: options.paths.html,
-      favicon: path.resolve(options.paths.public, 'favicon.ico')
+      favicon: path.resolve(options.paths.public, 'favicon.ico'),
     }),
     new DefinePlugin({
-      __IS_DEV__: JSON.stringify(isDev.toString())
-    })
+      __IS_DEV__: JSON.stringify(isDev.toString()),
+    }),
   ]
 
   if (isDev) {
@@ -32,8 +32,8 @@ export const buildPlugins = (options: BuildOptions): Plugins => {
   if (isProd) {
     plugins.push(
       new CopyPlugin({
-        patterns: [{ from: path.resolve(options.paths.public, 'robots.txt'), to: options.paths.output }]
-      })
+        patterns: [{ from: path.resolve(options.paths.public, 'robots.txt'), to: options.paths.output }],
+      }),
     )
   }
 

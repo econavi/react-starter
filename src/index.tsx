@@ -24,7 +24,7 @@ const router = createBrowserRouter([
           <Suspense fallback={'Loading about...'}>
             <AboutPage />
           </Suspense>
-        )
+        ),
       },
       {
         path: '/contacts',
@@ -32,14 +32,14 @@ const router = createBrowserRouter([
           <Suspense fallback={'Loading contacts...'}>
             <ContactsPage />
           </Suspense>
-        )
-      }
-    ]
+        ),
+      },
+    ],
   },
   {
     path: '*',
-    element: <h1>404 Not found page</h1>
-  }
+    element: <h1>404 Not found page</h1>,
+  },
 ])
 
 container.render(<RouterProvider router={router} />)

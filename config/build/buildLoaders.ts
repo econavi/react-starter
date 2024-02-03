@@ -8,7 +8,7 @@ export const buildLoaders = (options: BuildOptions): ModuleOptions['rules'] => {
 
   const cssLoader = {
     test: /\.css$/i,
-    use: ['style-loader', 'css-loader']
+    use: ['style-loader', 'css-loader'],
   }
 
   const tsLoader = {
@@ -19,16 +19,16 @@ export const buildLoaders = (options: BuildOptions): ModuleOptions['rules'] => {
         loader: 'ts-loader',
         options: {
           getCustomTransformers: () => ({
-            before: [isDev && ReactRefreshTypeScript()].filter(Boolean)
-          })
-        }
-      }
-    ]
+            before: [isDev && ReactRefreshTypeScript()].filter(Boolean),
+          }),
+        },
+      },
+    ],
   }
 
   const assetLoader = {
     test: /\.(png|jpg|gif)$/,
-    use: ['file-loader']
+    use: ['file-loader'],
   }
 
   const svgLoader = {
@@ -44,14 +44,14 @@ export const buildLoaders = (options: BuildOptions): ModuleOptions['rules'] => {
               {
                 name: 'convertColors',
                 params: {
-                  currentColor: true
-                }
-              }
-            ]
-          }
-        }
-      }
-    ]
+                  currentColor: true,
+                },
+              },
+            ],
+          },
+        },
+      },
+    ],
   }
 
   return [svgLoader, assetLoader, cssLoader, tsLoader]

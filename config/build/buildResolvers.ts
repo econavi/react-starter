@@ -6,6 +6,6 @@ export const buildResolvers = (options: BuildOptions): Configuration['resolve'] 
     extensions: ['.tsx', '.ts', '.js'],
     preferAbsolute: true,
     modules: [options.paths.src, 'node_modules'],
-    alias: {}
+    alias: {},
   }
 }
